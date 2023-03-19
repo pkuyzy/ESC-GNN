@@ -1,2 +1,63 @@
 # ESC-GNN
- Code for "Efficiently Counting Substructures by Subgraph GNNs without Running GNN on Subgraphs"
+The code for "Efficiently Counting Substructures by Subgraph GNNs without Running GNN on Subgraphs"
+
+Counting cycles:
+
+```
+python run_graphcount.py --batch_size 128 --target 0 --model NestedGIN_eff --h 3 --lr 1e-2
+python run_graphcount.py --batch_size 128 --target 1 --model NestedGIN_eff --h 2 --lr 5e-3
+python run_graphcount.py --batch_size 128 --target 2 --model NestedGIN_eff --h 2 --lr 5e-3
+python run_graphcount.py --batch_size 128 --target 3 --model NestedGIN_eff --h 3 --lr 5e-3
+```
+
+Counting graphlets:
+
+```
+python run_graphcount.py --batch_size 128 --target 0 --model NestedGIN_eff --h 1 --lr 8e-3 --dataset count_graphlet
+python run_graphcount.py --batch_size 256 --target 1 --model NestedGIN_eff --h 4 --lr 4e-3 --dataset count_graphlet
+python run_graphcount.py --batch_size 521 --target 2 --model NestedGIN_eff --h 1 --lr 4e-3 --dataset count_graphlet
+python run_graphcount.py --batch_size 128 --target 3 --model NestedGIN_eff --h 2 --lr 4e-3 --dataset count_graphlet
+python run_graphcount.py --batch_size 128 --target 4 --model NestedGIN_eff --h 2 --lr 5e-3 --dataset count_graphlet
+```
+
+QM9, you can change the target  from 0 to 11:
+
+```
+python run_qm9.py --target 0
+```
+
+ZINC:
+
+```
+python run_zinc.py --model NestedGIN_eff --layers 5 --lr 5e-4
+```
+
+OGBG-MOLHIV:
+
+```
+python run_ogb_mol.py --h 4 --num_layer 6 --save_appendix _h4_l6_spd_rd --dataset ogbg-molhiv --node_label spd --use_rd --drop_ratio 0.65 --runs 10 --efficient True --lr 1e-3 --self_loop True --edge_nest True
+```
+
+OGBG-MOLPCBA:
+
+```
+python run_ogb_mol.py --h 3 --num_layer 4 --save_appendix _h3_l4_spd_rd_edge_self_eff --dataset ogbg-molpcba --use_rd --drop_ratio 0.5 --epochs 150 --runs 10 --edge_nest True --self_loop True --efficient True --lr 2e-4
+```
+
+For evaluating the expressiveness in terms of differentiating non-isomorphic graphs:
+
+```
+python run_sr.py
+python run_csl.py
+python run_exp.py
+```
+
+ 
+
+
+
+The new experiments on generating cycles on ZINC, you can change the target from 0 to 3:
+
+```
+python run_zinc_cycle.py --model NestedGIN_eff --h 3 --target 0
+```
