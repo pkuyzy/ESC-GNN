@@ -1,6 +1,14 @@
 # ESC-GNN
 The code for "Efficiently Counting Substructures by Subgraph GNNs without Running GNN on Subgraphs"
 
+The requirement is available at requirements.txt. Key packages include torch, torch_geometric (and the related packages, including torch_scatter, torch_sparse, torch_cluster, and torch_spline_conv), networkx, and rdkit.
+
+For installing torch, please refer to: https://pytorch.org/get-started/previous-versions/
+
+For installing torch_geometric, please refer to: https://pytorch-geometric.readthedocs.io/en/latest/install/installation.html
+
+
+
 Counting cycles:
 
 ```
