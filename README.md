@@ -25,7 +25,7 @@ python run_graphcount.py --batch_size 128 --target 0 --model NestedGIN_eff --h 1
 python run_graphcount.py --batch_size 256 --target 1 --model NestedGIN_eff --h 4 --lr 4e-3 --dataset count_graphlet
 python run_graphcount.py --batch_size 521 --target 2 --model NestedGIN_eff --h 1 --lr 4e-3 --dataset count_graphlet
 python run_graphcount.py --batch_size 128 --target 3 --model NestedGIN_eff --h 2 --lr 4e-3 --dataset count_graphlet
-python run_graphcount.py --batch_size 128 --target 4 --model NestedGIN_eff --h 2 --lr 5e-3 --dataset count_graphlet
+python run_graphcount.py --batch_size 32 --target 4 --model NestedGIN_eff --h 4 --lr 5e-3 --dataset count_graphlet
 ```
 
 QM9, you can change the target  from 0 to 11:
