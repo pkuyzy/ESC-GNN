@@ -13,7 +13,7 @@ Counting cycles:
 
 ```
 python run_graphcount.py --batch_size 128 --target 0 --model NestedGIN_eff --h 3 --lr 1e-2
-python run_graphcount.py --batch_size 128 --target 1 --model NestedGIN_eff --h 2 --lr 5e-3
+python run_graphcount.py --batch_size 128 --target 1 --model NestedGIN_eff --h 3 --lr 1e-2 --layers 5
 python run_graphcount.py --batch_size 128 --target 2 --model NestedGIN_eff --h 2 --lr 5e-3
 python run_graphcount.py --batch_size 128 --target 3 --model NestedGIN_eff --h 3 --lr 5e-3
 ```
