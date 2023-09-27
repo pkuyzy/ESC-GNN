@@ -69,3 +69,7 @@ The new experiments on generating cycles on ZINC, you can change the target from
 ```
 python run_zinc_cycle.py --model NestedGIN_eff --h 3 --target 0
 ```
+
+
+
+Subgraphs can be generated in parallel now using package "pqdm" or "concurrent.futures", details please see dataset_zinc.py. You can simply set "num_workers" to be larger than 1 to obtain a parallel generation.
