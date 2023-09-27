@@ -8,10 +8,11 @@ from torch_geometric.data import (
 import pickle
 import torch
 import numpy as np
+import pqdm
 
 class ZINC(InMemoryDataset):
     def __init__(self, root='data/zinc', processed_name='processed', dataset='train',
-                 transform=None, pre_transform=None, pre_filter=None):
+                 transform=None, pre_transform=None, pre_filter=None, num_workers = 0):
         self.root = root
         self.transform = transform
         self.pre_filter = pre_filter
@@ -20,6 +21,7 @@ class ZINC(InMemoryDataset):
         super(ZINC, self).__init__(root=root, transform=transform, pre_transform=pre_transform,
                                    pre_filter=pre_filter)
         id = 0 if dataset=='train' else 1 if dataset=='val' else 2
+        self.num_workers = num_workers
         self.data, self.slices = torch.load(self.processed_paths[id])
 
 
@@ -72,12 +74,15 @@ class ZINC(InMemoryDataset):
             if self.pre_filter is not None:
                 data_list = [data for data in data_list if self.pre_filter(data)]
             if self.pre_transform is not None:
-                temp = []
-                for i, data in enumerate(data_list):
-                    if i % 500 == 0:
-                        print('pre-processing: %d/%d' %(i, len(raw_data)))
-                    temp.append(self.pre_transform(data))
-                data_list = temp
+                if self.num_workers > 1:
+                    data_list = pqdm(data_list, self.pre_transform, n_jobs=self.num_workers)
+                else:
+                    temp = []
+                    for i, data in enumerate(data_list):
+                        if i % 500 == 0:
+                            print('pre-processing: %d/%d' %(i, len(raw_data)))
+                        temp.append(self.pre_transform(data))
+                    data_list = temp
             # data_list = [self.pre_transform(data) for data in data_list]
             data, slices = self.collate(data_list)
             torch.save((data, slices), os.path.join(self.processed_dir, save_name))
