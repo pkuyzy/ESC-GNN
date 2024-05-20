@@ -1,7 +1,7 @@
 out_dir: results
 metric_best: mae
 metric_agg: argmin
-seed: 777
+seed: 0
 wandb:
   use: True
   project: ZINC
