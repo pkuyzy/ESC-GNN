@@ -1,5 +1,5 @@
 # ESC-GNN
-The official code for our KDD 2024 paper "An Efficient Subgraph GNN with Provable Substructure Counting Power" (paper)[https://arxiv.org/pdf/2303.10576]
+The official code for our KDD 2024 paper "An Efficient Subgraph GNN with Provable Substructure Counting Power" ([paper](https://arxiv.org/pdf/2303.10576))
 
 The requirement is available at [requirements.txt](requirements.txt). Key packages include torch, torch_geometric (and the related packages, including torch_scatter, torch_sparse, torch_cluster, and torch_spline_conv), networkx, and rdkit.
 
